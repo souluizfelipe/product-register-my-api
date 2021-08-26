@@ -4,8 +4,12 @@ import {
 } from 'react'
 
 import axios from 'axios'
+import { 
+  Grid,
+} from '@material-ui/core'
 
 import CardComponent from '../components/CardComponent'
+
 
 const List = () => {
 
@@ -22,15 +26,19 @@ const List = () => {
 
   return(
     <>
-    {
-      products.map((product) => (
-        <CardComponent
-          name={product.name}
-          brand={product.brand}
-          price={product.price}
-        />
-      ))
-    }
+      <Grid container>
+        {
+          products.map((product) => (
+            <Grid xs={12} sm={6} md={4} >
+              <CardComponent
+              name={product.name}
+              brand={product.brand}
+              price={product.price}
+              />
+            </Grid>
+          ))
+        } 
+      </Grid>
     </>
   )
 }

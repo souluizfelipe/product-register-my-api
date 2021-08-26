@@ -13,11 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    margin: '0 8px 16px', 
   },
   title: {
     fontSize: 14,
@@ -31,7 +27,8 @@ export default function OutlinedCard({ name, brand, price}) {
   const classes = useStyles()
 
   return (
-    <Card className={classes.root} variant="outlined">
+
+    <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Product
