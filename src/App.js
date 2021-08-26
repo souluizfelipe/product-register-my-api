@@ -7,7 +7,7 @@ import {
 
 import TemplateDefault from './template/Default'
 import TemplatePage from './template/Page'
-import Home from './pages/Home'
+import List from './pages/List'
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <TemplateDefault>
           <Switch>
             <Route path="/">
-              <TemplatePage title="Home"  Component={Home} />
+              <TemplatePage title="Product List"  Component={List} />
             </Route>
           </Switch>
         </TemplateDefault>
