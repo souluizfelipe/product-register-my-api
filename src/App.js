@@ -7,7 +7,8 @@ import {
 
 import TemplateDefault from './template/Default'
 import TemplatePage from './template/Page'
-import List from './pages/List'
+import ListProducts from './pages/List'
+import RegisterProducts from './pages/Register'
 
 const App = () => {
   return (
@@ -15,8 +16,11 @@ const App = () => {
       <Router>
         <TemplateDefault>
           <Switch>
+            <Route path="/products/add">
+              <TemplatePage title="Add New Product"  Component={RegisterProducts} />
+            </Route>
             <Route path="/">
-              <TemplatePage title="Product List"  Component={List} />
+              <TemplatePage title="Product List"  Component={ListProducts} />
             </Route>
           </Switch>
         </TemplateDefault>

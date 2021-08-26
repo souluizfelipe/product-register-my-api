@@ -11,7 +11,7 @@ import {
 import CardComponent from '../components/CardComponent'
 
 
-const List = () => {
+const ListProducts = () => {
 
   const [ products, setProducts ] = useState([])
 
@@ -43,4 +43,4 @@ const List = () => {
   )
 }
 
-export default List
+export default ListProducts
