@@ -10,10 +10,10 @@ import EditIcon from '@material-ui/icons/Edit'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-    margin: '0 8px 16px', 
+const useStyles = makeStyles(theme => ({
+root: {
+  minWidth: 275,
+    margin: theme.spacing(1)
   },
   title: {
     fontSize: 14,
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   brand: {
     fontSize: 16,
   },
-})
+}))
 
 export default function OutlinedCard({ name, brand, price}) {
   const classes = useStyles()
