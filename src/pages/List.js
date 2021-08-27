@@ -22,18 +22,32 @@ const ListProducts = () => {
 
         setProducts(data)
       })
-  },[])
+    },[products])
+    
+  const handleDeleteProduct = (id) => {
+    axios.delete(`http://localhost:8080/api/products/${id}`)
+      .then(res => {
+        if(res.data.message === "success") {
+          console.log(res.data.message)   
+        } else {
+          console.log(res.data.message)   
+        }
+      })
+  }
+
 
   return(
     <>
       <Grid container>
         {
           products.map((product) => (
-            <Grid xs={12} sm={6} md={4} >
+            <Grid item xs={12} sm={6} md={4} >
               <CardComponent
+              id={product._id}
               name={product.name}
               brand={product.brand}
               price={product.price}
+              onDelete={handleDeleteProduct}
               />
             </Grid>
           ))
