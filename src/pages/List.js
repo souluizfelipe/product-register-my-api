@@ -9,10 +9,12 @@ import {
 } from '@material-ui/core'
 
 import CardComponent from '../components/CardComponent'
+import VerifyDeleteProductModal from '../components/VerifyModal'
 
 
 const ListProducts = () => {
 
+  const [ modalOpen, setModalOpen ] = useState(false)
   const [ products, setProducts ] = useState([])
 
   useEffect(() => {
@@ -23,8 +25,13 @@ const ListProducts = () => {
         setProducts(data)
       })
     },[products])
-    
+
+  const handleDeleteClick = (id) => {
+    setModalOpen(true)
+  }
+
   const handleDeleteProduct = (id) => {
+    console.log(id)
     axios.delete(`http://localhost:8080/api/products/${id}`)
       .then(res => {
         if(res.data.message === "success") {
@@ -32,7 +39,9 @@ const ListProducts = () => {
         } else {
           console.log(res.data.message)   
         }
-      })
+        })
+
+    setModalOpen(false)
   }
 
 
@@ -47,7 +56,14 @@ const ListProducts = () => {
               name={product.name}
               brand={product.brand}
               price={product.price}
-              onDelete={handleDeleteProduct}
+              onDelete={handleDeleteClick}
+              />
+              <VerifyDeleteProductModal 
+                open={modalOpen}
+                title="Are you sure you want to Delete this product"
+                message="This action is irreversible"
+                onClose={() => {setModalOpen(false)}}
+                onConfirm={() => handleDeleteProduct(product._id)}
               />
             </Grid>
           ))
