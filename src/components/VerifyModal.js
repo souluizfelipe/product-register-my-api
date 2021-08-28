@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import {
   Button,
   Dialog,
@@ -6,38 +5,31 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Slide
 } from '@material-ui/core';
 
-
-const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const VerifyModal = ({ message, title, open, onClose, onConfirm }) => {
 
   return (
     <Dialog
       open={open}
-      TransitionComponent={Transition}
-      keepMounted
       onClose={onClose}
-      aria-labelledby="alert-dialog-slide-title"
-      aria-describedby="alert-dialog-slide-description"
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"               
     >
-      <DialogTitle id="alert-dialog-slide-title">
+      <DialogTitle id="alert-dialog-title">
         {title}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
-         {message}
+        <DialogContentText id="alert-dialog-description">
+          {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">
           No
         </Button>
-        <Button onClick={onConfirm} color="primary">
+        <Button onClick={onConfirm} color="primary" autoFocus>
           Yes
         </Button>
       </DialogActions>

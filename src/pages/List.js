@@ -14,7 +14,7 @@ import VerifyDeleteProductModal from '../components/VerifyModal'
 
 const ListProducts = () => {
 
-  const [ modalOpen, setModalOpen ] = useState(false)
+  const [ deleteModalOpen, setDeleteModalOpen ] = useState(false)
   const [ products, setProducts ] = useState([])
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ListProducts = () => {
     },[products])
 
   const handleDeleteClick = (id) => {
-    setModalOpen(true)
+    setDeleteModalOpen(true)
   }
 
   const handleDeleteProduct = (id) => {
@@ -39,9 +39,9 @@ const ListProducts = () => {
         } else {
           console.log(res.data.message)   
         }
-        })
+      })
 
-    setModalOpen(false)
+    setDeleteModalOpen(false)
   }
 
 
@@ -59,10 +59,10 @@ const ListProducts = () => {
               onDelete={handleDeleteClick}
               />
               <VerifyDeleteProductModal 
-                open={modalOpen}
+                open={deleteModalOpen}
                 title="Are you sure you want to Delete this product"
                 message="This action is irreversible"
-                onClose={() => {setModalOpen(false)}}
+                onClose={() => {setDeleteModalOpen(false)}}
                 onConfirm={() => handleDeleteProduct(product._id)}
               />
             </Grid>
