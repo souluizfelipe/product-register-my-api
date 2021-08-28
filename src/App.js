@@ -16,6 +16,9 @@ const App = () => {
       <Router>
         <TemplateDefault>
           <Switch>
+            <Route path={`/products/edit`} >
+              <TemplatePage title="Edit Existing Product"  Component={RegisterProducts} />
+            </Route>
             <Route path="/products/add">
               <TemplatePage title="Add New Product"  Component={RegisterProducts} />
             </Route>

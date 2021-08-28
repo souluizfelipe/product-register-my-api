@@ -44,6 +44,9 @@ const ListProducts = () => {
     setDeleteModalOpen(false)
   }
 
+  const handleEditClick = (id) => {
+    console.log(id)
+  }
 
   return(
     <>
@@ -57,6 +60,7 @@ const ListProducts = () => {
               brand={product.brand}
               price={product.price}
               onDelete={handleDeleteClick}
+              onEdit={handleEditClick}
               />
               <VerifyDeleteProductModal 
                 open={deleteModalOpen}

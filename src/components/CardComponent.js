@@ -23,13 +23,24 @@ root: {
   },
 }))
 
-export default function OutlinedCard({ id, name, brand, price, onDelete}) {
+ const CardComponent = ({ 
+  id, 
+  name, 
+  brand, 
+  price, 
+  onDelete, 
+  onEdit
+}) => {
+  
   const classes = useStyles()
 
   const handleDeleteButtonClick = (id) => {
     onDelete(id)
   }
 
+  const handleEditButtonClick = () => {
+    onEdit(id)
+  }
 
   return (
 
@@ -52,7 +63,7 @@ export default function OutlinedCard({ id, name, brand, price, onDelete}) {
         </Typography>
       </CardContent>
       <CardActions>
-      <IconButton aria-label="add to favorites">
+      <IconButton aria-label="add to favorites" onClick={() => handleEditButtonClick(id)}>
         <EditIcon />
       </IconButton>
       <IconButton aria-label="add to favorites" onClick={() => handleDeleteButtonClick(id)}>
@@ -62,3 +73,6 @@ export default function OutlinedCard({ id, name, brand, price, onDelete}) {
     </Card>
   )
 }
+
+
+export default CardComponent
